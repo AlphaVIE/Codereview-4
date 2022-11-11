@@ -1,9 +1,10 @@
 <?php 
 require_once 'actions/db_connect.php';
 
-$sql = "SELECT * FROM items";
+$id = ($_GET['id']);
+$sql = "SELECT * FROM items WHERE item_id = {$id}";
 $result = mysqli_query($connect ,$sql);
-$tbody=''; //this variable will hold the body for the table
+$tbody='';
 if(mysqli_num_rows($result)  > 0) {     
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
         $tbody .= "<tr>
@@ -11,12 +12,14 @@ if(mysqli_num_rows($result)  > 0) {
             <td>" .$row['title']."</td>
             <td><img class='img-thumbnail' src='$row[image]'</td>
             <td>" .$row['isbn']."</td>
+            <td>" .$row['short_description']."</td>
             <td>" .$row['type']."</td>
-            <td><a href='publisher.php?publisher_name=".$row['publisher_name']."'>" .$row['publisher_name']."</a></td>
+            <td>" .$row['creator_first_name']."</td>
+            <td>" .$row['creator_last_name']."</td>
+            <td>" .$row['publisher_name']."</td>
+            <td>" .$row['publish_date']."</td>
             <td>" .$row['availability']."</td>
-            <td><a href='update.php?id=" .$row['item_id']."'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
-            <a href='delete.php?id=" .$row['item_id']."'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a>
-            <a href='details.php?id=" .$row['item_id']."'><button class='btn btn-danger btn-sm' type='button'>Details</button></a></td>
+            <td><a href='index.php'><button class='btn btn-alert btn-sm' type='button'>Home</button></a>
             </tr>";
     };
 } else {
@@ -52,10 +55,7 @@ mysqli_close($connect);
     </head>
     <body>
         <div class="manageProduct w-75 mt-3">    
-            <div class='mb-3'>
-                <a href= "create.php"><button class='btn btn-primary'type="button" >Add product</button></a>
-            </div>
-            <p class='h2'>Products</p>
+            <p class='h2'>Items (Detail View)</p>
             <table class='table table-striped'>
                 <thead class='table-success'>
                     <tr>
@@ -63,8 +63,12 @@ mysqli_close($connect);
                         <th>Title</th>
                         <th>Image</th>
                         <th>ISBN</th>
+                        <th>Short Description</th>
                         <th>Type</th>
-                        <th>Publisher Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Publisher</th>
+                        <th>Publish Date</th>
                         <th>Availability</th>
                         <th>Actions</th>
                     </tr>
