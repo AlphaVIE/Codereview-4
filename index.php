@@ -56,6 +56,7 @@ mysqli_close($connect);
                 <a href= "create.php"><button class='btn btn-primary'type="button" >Add product</button></a>
             </div>
             <p class='h2'>Products</p>
+            <p class='h4'>Availability Guideline: 0 = not available, 1 = available</p>
             <table class='table table-striped'>
                 <thead class='table-success'>
                     <tr>

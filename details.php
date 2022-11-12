@@ -56,6 +56,7 @@ mysqli_close($connect);
     <body>
         <div class="manageProduct w-75 mt-3">    
             <p class='h2'>Items (Detail View)</p>
+            <p class='h4'>Availability Guideline: 0 = not available, 1 = available</p>
             <table class='table table-striped'>
                 <thead class='table-success'>
                     <tr>
