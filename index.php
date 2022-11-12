@@ -53,7 +53,7 @@ mysqli_close($connect);
     <body>
         <div class="manageProduct w-75 mt-3">    
             <div class='mb-3'>
-                <a href= "create.php"><button class='btn btn-primary'type="button" >Add product</button></a>
+                <a href= "create.php"><button class='btn btn-primary'type="button" >Add Item</button></a>
             </div>
             <p class='h2'>Products</p>
             <p class='h4'>Availability Guideline: 0 = not available, 1 = available</p>
